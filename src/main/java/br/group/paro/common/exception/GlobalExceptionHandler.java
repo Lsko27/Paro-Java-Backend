@@ -38,4 +38,21 @@ public class GlobalExceptionHandler {
                 .badRequest()
                 .body(erros);
     }
+    @ExceptionHandler(RecursoNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> recursoNaoEncontrado(
+            RecursoNaoEncontradoException exception
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(Map.of("message", exception.getMessage()));
+    }
+
+    @ExceptionHandler(OperacaoNaoPermitidaException.class)
+    public ResponseEntity<Map<String, String>> operacaoNaoPermitida(
+            OperacaoNaoPermitidaException exception
+    ) {
+        return ResponseEntity
+                .status(HttpStatus.FORBIDDEN)
+                .body(Map.of("message", exception.getMessage()));
+    }
 }
