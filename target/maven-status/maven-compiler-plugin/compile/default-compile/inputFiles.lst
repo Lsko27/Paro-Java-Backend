@@ -1,0 +1,12 @@
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\common\exception\EmailJaCadastradoException.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\config\CorsConfig.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\config\PasswordConfig.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\config\SecurityConfig.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\health\HealthController.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\ParoApplication.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\dto\UsuarioCadastroRequest.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\dto\UsuarioResponse.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\entity\TipoUsuario.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\entity\Usuario.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\repository\UsuarioRepository.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\service\UsuarioService.java

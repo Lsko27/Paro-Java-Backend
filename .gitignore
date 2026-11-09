@@ -1,0 +1,21 @@
+### Environment variables ###
+.env
+.env.*
+!.env.example
+
+### Credentials ###
+*.p12
+*.pfx
+*.pem
+*.key
+*.jks
+*.keystore
+.idea/
+
+### Logs ###
+*.log
+logs/
+
+### OS ###
+.DS_Store
+Thumbs.db

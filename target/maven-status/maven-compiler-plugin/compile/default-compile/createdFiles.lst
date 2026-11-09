@@ -1,0 +1,12 @@
+br\group\paro\usuario\entity\TipoUsuario.class
+br\group\paro\config\SecurityConfig.class
+br\group\paro\usuario\service\UsuarioService.class
+br\group\paro\usuario\dto\UsuarioCadastroRequest.class
+br\group\paro\common\exception\EmailJaCadastradoException.class
+br\group\paro\usuario\repository\UsuarioRepository.class
+br\group\paro\health\HealthController.class
+br\group\paro\config\CorsConfig.class
+br\group\paro\ParoApplication.class
+br\group\paro\config\PasswordConfig.class
+br\group\paro\usuario\entity\Usuario.class
+br\group\paro\usuario\dto\UsuarioResponse.class
