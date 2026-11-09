@@ -50,13 +50,15 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .requestMatchers(
-                                "/api/v1/estabelecimentos/meus"
+                                "/api/v1/estabelecimentos/meus",
+                                "/api/v1/estabelecimentos/*/recursos/gerenciar"
                         ).authenticated()
 
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/api/v1/estabelecimentos",
-                                "/api/v1/estabelecimentos/{id}"
+                                "/api/v1/estabelecimentos/{id}",
+                                "/api/v1/estabelecimentos/{id}/recursos"
                         ).permitAll()
 
                         .anyRequest().authenticated()

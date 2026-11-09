@@ -17,8 +17,16 @@ E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabeleciment
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\entity\Estabelecimento.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\repository\EstabelecimentoRepository.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\service\EstabelecimentoService.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\controller\EstabelecimentoRecursoController.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\dto\EstabelecimentoRecursoRequest.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\dto\EstabelecimentoRecursoResponse.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\entity\EstabelecimentoRecurso.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\repository\EstabelecimentoRecursoRepository.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\service\EstabelecimentoRecursoService.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\health\HealthController.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\ParoApplication.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\entity\Recurso.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\repository\RecursoRepository.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\controller\UsuarioController.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\dto\UsuarioCadastroRequest.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\dto\UsuarioResponse.java
