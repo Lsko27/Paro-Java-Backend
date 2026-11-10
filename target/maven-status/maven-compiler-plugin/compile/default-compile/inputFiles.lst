@@ -2,6 +2,9 @@ E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\auth\controlle
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\auth\dto\LoginRequest.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\auth\dto\LoginResponse.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\auth\service\AuthService.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\busca\controller\BuscaController.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\busca\dto\BuscaEstabelecimentoResponse.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\busca\service\BuscaService.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\common\exception\EmailJaCadastradoException.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\common\exception\GlobalExceptionHandler.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\common\exception\OperacaoNaoPermitidaException.java
@@ -25,8 +28,11 @@ E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabeleciment
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\service\EstabelecimentoRecursoService.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\health\HealthController.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\ParoApplication.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\controller\RecursoController.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\dto\RecursoResponse.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\entity\Recurso.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\repository\RecursoRepository.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\recurso\service\RecursoService.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\controller\UsuarioController.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\dto\UsuarioCadastroRequest.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\usuario\dto\UsuarioResponse.java

@@ -61,6 +61,16 @@ public class SecurityConfig {
                                 "/api/v1/estabelecimentos/{id}/recursos"
                         ).permitAll()
 
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/v1/recursos"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/v1/estabelecimentos/buscar"
+                        ).permitAll()
+
                         .anyRequest().authenticated()
                 )
 

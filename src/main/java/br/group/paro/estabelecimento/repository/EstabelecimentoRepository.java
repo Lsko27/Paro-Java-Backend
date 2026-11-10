@@ -2,6 +2,8 @@ package br.group.paro.estabelecimento.repository;
 
 import br.group.paro.estabelecimento.entity.Estabelecimento;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,5 +22,20 @@ public interface EstabelecimentoRepository
 
     List<Estabelecimento> findByCidadeIgnoreCaseAndAtivoTrue(
             String cidade
+    );
+    @Query("""
+    SELECT e
+    FROM Estabelecimento e
+    WHERE e.ativo = true
+      AND EXISTS (
+          SELECT er.id
+          FROM EstabelecimentoRecurso er
+          WHERE er.estabelecimento = e
+            AND er.recurso.id = :recursoId
+            AND er.disponivel = true
+      )
+    """)
+    List<Estabelecimento> buscarAtivosPorRecurso(
+            @Param("recursoId") Long recursoId
     );
 }
