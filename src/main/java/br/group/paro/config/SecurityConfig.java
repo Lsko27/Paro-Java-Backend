@@ -1,3 +1,4 @@
+
 package br.group.paro.config;
 
 import org.springframework.context.annotation.Bean;
@@ -5,10 +6,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfLogoutHandler;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+import jakarta.servlet.DispatcherType;
+
+import java.util.Set;
 
 @Configuration
 public class SecurityConfig {
@@ -25,15 +33,40 @@ public class SecurityConfig {
         CsrfTokenRequestAttributeHandler csrfHandler =
                 new CsrfTokenRequestAttributeHandler();
 
+        Set<String> safeMethods = Set.of(
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "TRACE"
+        );
+
+        RequestMatcher csrfMatcher = request -> {
+            if (safeMethods.contains(request.getMethod())) {
+                return false;
+            }
+
+            String path = request.getServletPath();
+
+            return !path.equals("/api/v1/auth/register")
+                    && !path.equals("/api/v1/auth/login");
+        };
+
+        CsrfFilter csrfFilter = new CsrfFilter(csrfRepository);
+
+        csrfFilter.setRequireCsrfProtectionMatcher(csrfMatcher);
+        csrfFilter.setRequestHandler(csrfHandler);
+
         http
                 .cors(Customizer.withDefaults())
 
-                .csrf(csrf -> csrf
-                        .csrfTokenRepository(csrfRepository)
-                        .csrfTokenRequestHandler(csrfHandler)
-                        .ignoringRequestMatchers(
-                                "/api/v1/auth/register",
-                                "/api/v1/auth/login"
+                // Substitui a configuração automática de CSRF
+                // para não dispensar requisições Bearer via cookie.
+                .csrf(AbstractHttpConfigurer::disable)
+                .addFilterAt(csrfFilter, CsrfFilter.class)
+
+                .logout(logout -> logout
+                        .addLogoutHandler(
+                                new CsrfLogoutHandler(csrfRepository)
                         )
                 )
 
@@ -42,6 +75,10 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(auth -> auth
+                        .dispatcherTypeMatchers(
+                                DispatcherType.ERROR
+                        ).permitAll()
+
                         .requestMatchers(
                                 "/api/v1/health",
                                 "/api/v1/auth/register",
