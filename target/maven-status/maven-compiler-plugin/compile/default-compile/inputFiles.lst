@@ -15,11 +15,17 @@ E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\config\JwtConf
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\config\PasswordConfig.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\config\SecurityConfig.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\controller\EstabelecimentoController.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\controller\HorarioFuncionamentoController.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\dto\EstabelecimentoRequest.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\dto\EstabelecimentoResponse.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\dto\HorarioFuncionamentoRequest.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\dto\HorarioFuncionamentoResponse.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\entity\Estabelecimento.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\entity\HorarioFuncionamento.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\repository\EstabelecimentoRepository.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\repository\HorarioFuncionamentoRepository.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\service\EstabelecimentoService.java
+E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimento\service\HorarioFuncionamentoService.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\controller\EstabelecimentoRecursoController.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\dto\EstabelecimentoRecursoRequest.java
 E:\FIAP\2º Ano\Projetos\backend-paro\src\main\java\br\group\paro\estabelecimentorecurso\dto\EstabelecimentoRecursoResponse.java
