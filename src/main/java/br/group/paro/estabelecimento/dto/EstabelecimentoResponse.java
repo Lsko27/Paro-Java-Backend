@@ -8,6 +8,7 @@ public record EstabelecimentoResponse(
         Long id,
         String nome,
         String descricao,
+        String condicoesAcesso,
         String cep,
         String logradouro,
         String numero,

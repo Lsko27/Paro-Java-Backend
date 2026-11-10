@@ -9,6 +9,7 @@ import br.group.paro.estabelecimento.repository.EstabelecimentoRepository;
 import br.group.paro.usuario.entity.TipoUsuario;
 import br.group.paro.usuario.entity.Usuario;
 import br.group.paro.usuario.repository.UsuarioRepository;
+import br.group.paro.estabelecimento.dto.CondicoesAcessoRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,6 +69,10 @@ public class EstabelecimentoService {
                 request.longitude(),
                 proprietario,
                 normalizarImagemUrl(request.imagemUrl())
+        );
+
+        estabelecimento.setCondicoesAcesso(
+                normalizarDescricao(request.condicoesAcesso())
         );
 
         Estabelecimento salvo =
@@ -138,6 +143,29 @@ public class EstabelecimentoService {
                 request.latitude(),
                 request.longitude(),
                 request.imagemUrl()
+        );
+
+        estabelecimento.setCondicoesAcesso(
+                normalizarDescricao(request.condicoesAcesso())
+        );
+
+        return toResponse(estabelecimento);
+    }
+
+    @Transactional
+    public EstabelecimentoResponse atualizarCondicoesAcesso(
+            Long estabelecimentoId,
+            CondicoesAcessoRequest request,
+            Long usuarioId
+    ) {
+        Estabelecimento estabelecimento =
+                buscarEstabelecimentoDoProprietario(
+                        estabelecimentoId,
+                        usuarioId
+                );
+
+        estabelecimento.setCondicoesAcesso(
+                normalizarDescricao(request.condicoesAcesso())
         );
 
         return toResponse(estabelecimento);
@@ -225,6 +253,7 @@ public class EstabelecimentoService {
                 estabelecimento.getId(),
                 estabelecimento.getNome(),
                 estabelecimento.getDescricao(),
+                estabelecimento.getCondicoesAcesso(),
                 estabelecimento.getCep(),
                 estabelecimento.getLogradouro(),
                 estabelecimento.getNumero(),

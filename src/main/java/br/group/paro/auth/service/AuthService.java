@@ -105,6 +105,7 @@ public class AuthService {
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),
+                usuario.getTelefone(),
                 usuario.getTipoUsuario(),
                 usuario.getCriadoEm()
         );

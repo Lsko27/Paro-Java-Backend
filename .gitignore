@@ -1,3 +1,7 @@
+### Maven ###
+target/
+*.class
+
 ### Environment variables ###
 .env
 .env.*
@@ -10,7 +14,10 @@
 *.key
 *.jks
 *.keystore
+
+### IntelliJ IDEA ###
 .idea/
+*.iml
 
 ### Logs ###
 *.log

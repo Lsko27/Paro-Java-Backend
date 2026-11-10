@@ -23,6 +23,9 @@ public class Usuario {
     @Column(name = "NM_USUARIO", nullable = false, length = 150)
     private String nome;
 
+    @Column(name = "NR_TELEFONE", length = 11)
+    private String telefone;
+
     @Column(
             name = "DS_EMAIL",
             nullable = false,
@@ -95,5 +98,13 @@ public class Usuario {
 
     public LocalDateTime getCriadoEm() {
         return criadoEm;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }

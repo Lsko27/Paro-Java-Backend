@@ -8,6 +8,8 @@ public record UsuarioResponse(
         Long id,
         String nome,
         String email,
+        String telefone,
         TipoUsuario tipoUsuario,
         LocalDateTime criadoEm
-) {}
+) {
+}

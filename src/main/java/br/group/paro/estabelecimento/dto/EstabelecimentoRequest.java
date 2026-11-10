@@ -13,6 +13,12 @@ public record EstabelecimentoRequest(
         @Size(max = 1000, message = "A descrição deve ter no máximo 1000 caracteres")
         String descricao,
 
+        @Size(
+                max = 1000,
+                message = "As condições de acesso devem ter no máximo 1000 caracteres"
+        )
+        String condicoesAcesso,
+
         @NotBlank(message = "O CEP é obrigatório")
         @Pattern(
                 regexp = "^[0-9]{8}$",
