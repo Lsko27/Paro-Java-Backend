@@ -59,7 +59,9 @@ public class SecurityConfig {
                                 "/api/v1/estabelecimentos",
                                 "/api/v1/estabelecimentos/{id}",
                                 "/api/v1/estabelecimentos/{id}/recursos",
-                                "/api/v1/estabelecimentos/{id}/horarios"
+                                "/api/v1/estabelecimentos/{id}/horarios",
+                                "/api/v1/estabelecimentos/{id}/avaliacoes",
+                                "/api/v1/estabelecimentos/{id}/avaliacoes/resumo"
                         ).permitAll()
 
                         .requestMatchers(
