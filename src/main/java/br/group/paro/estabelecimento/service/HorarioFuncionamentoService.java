@@ -161,6 +161,7 @@ public class HorarioFuncionamentoService {
         }
     }
 
+
     private void validarHorarioDoDia(
             HorarioFuncionamentoRequest request
     ) {
@@ -200,6 +201,16 @@ public class HorarioFuncionamentoService {
                     request.horaFechamento()
             );
 
+            // 00:00 até 00:00 representa funcionamento 24 horas.
+            boolean aberto24Horas =
+                    abertura.equals(LocalTime.MIDNIGHT)
+                            && fechamento.equals(LocalTime.MIDNIGHT);
+
+            if (aberto24Horas) {
+                return;
+            }
+
+            // Demais horários devem ter abertura anterior ao fechamento.
             if (!abertura.isBefore(fechamento)) {
                 throw badRequest(
                         "A abertura deve ser anterior ao fechamento"
@@ -212,6 +223,7 @@ public class HorarioFuncionamentoService {
             );
         }
     }
+
 
     private ResponseStatusException badRequest(String message) {
         return new ResponseStatusException(
