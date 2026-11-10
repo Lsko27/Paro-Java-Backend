@@ -1,5 +1,6 @@
 package br.group.paro.estabelecimento.controller;
 
+import br.group.paro.estabelecimento.dto.CondicoesAcessoRequest;
 import br.group.paro.estabelecimento.dto.EstabelecimentoRequest;
 import br.group.paro.estabelecimento.dto.EstabelecimentoResponse;
 import br.group.paro.estabelecimento.service.EstabelecimentoService;
@@ -83,6 +84,23 @@ public class EstabelecimentoController {
 
         return ResponseEntity.ok(
                 estabelecimentoService.atualizar(
+                        id,
+                        request,
+                        usuarioId
+                )
+        );
+    }
+
+    @PatchMapping("/{id}/condicoes-acesso")
+    public ResponseEntity<EstabelecimentoResponse> atualizarCondicoesAcesso(
+            @PathVariable Long id,
+            @Valid @RequestBody CondicoesAcessoRequest request,
+            @AuthenticationPrincipal Jwt jwt
+    ) {
+        Long usuarioId = Long.valueOf(jwt.getSubject());
+
+        return ResponseEntity.ok(
+                estabelecimentoService.atualizarCondicoesAcesso(
                         id,
                         request,
                         usuarioId

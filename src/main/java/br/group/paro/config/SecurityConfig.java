@@ -74,6 +74,11 @@ public class SecurityConfig {
                                 "/api/v1/estabelecimentos/buscar"
                         ).permitAll()
 
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/v1/impacto/resumo"
+                        ).permitAll()
+
                         .anyRequest().authenticated()
                 )
 
