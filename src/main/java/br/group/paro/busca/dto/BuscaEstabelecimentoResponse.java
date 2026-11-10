@@ -14,5 +14,6 @@ public record BuscaEstabelecimentoResponse(
         String uf,
         BigDecimal latitude,
         BigDecimal longitude,
-        double distanciaKm
+        double distanciaKm,
+        String imagemUrl
 ) {}

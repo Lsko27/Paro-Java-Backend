@@ -2,6 +2,7 @@ package br.group.paro.estabelecimento.entity;
 
 import br.group.paro.usuario.entity.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import org.hibernate.type.NumericBooleanConverter;
 
 import java.math.BigDecimal;
@@ -23,6 +24,9 @@ public class Estabelecimento {
     )
     @Column(name = "ID_ESTABELECIMENTO")
     private Long id;
+
+    @Column(name = "DS_URL_IMAGEM", length = 1000)
+    private String imagemUrl;
 
     @Column(name = "NM_ESTABELECIMENTO", nullable = false, length = 150)
     private String nome;
@@ -97,7 +101,8 @@ public class Estabelecimento {
             String uf,
             BigDecimal latitude,
             BigDecimal longitude,
-            Usuario proprietario
+            Usuario proprietario,
+            String imagemUrl
     ) {
         this.nome = nome;
         this.descricao = descricao;
@@ -107,10 +112,12 @@ public class Estabelecimento {
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
+        this.imagemUrl = imagemUrl;
         this.latitude = latitude;
         this.longitude = longitude;
         this.proprietario = proprietario;
         this.ativo = true;
+        this.imagemUrl = imagemUrl;
     }
 
     @PrePersist
@@ -126,6 +133,10 @@ public class Estabelecimento {
 
     public String getNome() {
         return nome;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
     }
 
     public String getDescricao() {
@@ -186,8 +197,8 @@ public class Estabelecimento {
             String cidade,
             String uf,
             BigDecimal latitude,
-            BigDecimal longitude
-    ) {
+            BigDecimal longitude,
+            @Size(max = 1000, message = "A URL da imagem deve ter no máximo 1000 caracteres") String s) {
         this.nome = nome;
         this.descricao = descricao;
         this.cep = cep;

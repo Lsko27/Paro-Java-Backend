@@ -113,7 +113,8 @@ public class BuscaService {
                 estabelecimento.getUf(),
                 estabelecimento.getLatitude(),
                 estabelecimento.getLongitude(),
-                distancia
+                distancia,
+                estabelecimento.getImagemUrl()
         );
     }
 }

@@ -14,6 +14,7 @@ public record EstabelecimentoResponse(
         String bairro,
         String cidade,
         String uf,
+        String imagemUrl,
         BigDecimal latitude,
         BigDecimal longitude,
         Boolean ativo,

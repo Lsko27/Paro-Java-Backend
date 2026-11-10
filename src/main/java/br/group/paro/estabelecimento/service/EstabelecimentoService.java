@@ -22,6 +22,23 @@ public class EstabelecimentoService {
     private final EstabelecimentoRepository estabelecimentoRepository;
     private final UsuarioRepository usuarioRepository;
 
+    private String normalizarImagemUrl(String imagemUrl) {
+
+        if (imagemUrl == null || imagemUrl.isBlank()) {
+            return null;
+        }
+
+        String url = imagemUrl.trim();
+
+        if (!url.startsWith("https://")) {
+            throw new IllegalArgumentException(
+                    "A imagem deve utilizar uma URL HTTPS"
+            );
+        }
+
+        return url;
+    }
+
     public EstabelecimentoService(
             EstabelecimentoRepository estabelecimentoRepository,
             UsuarioRepository usuarioRepository
@@ -49,7 +66,8 @@ public class EstabelecimentoService {
                 request.uf().trim().toUpperCase(Locale.ROOT),
                 request.latitude(),
                 request.longitude(),
-                proprietario
+                proprietario,
+                normalizarImagemUrl(request.imagemUrl())
         );
 
         Estabelecimento salvo =
@@ -118,7 +136,8 @@ public class EstabelecimentoService {
                 request.cidade().trim(),
                 request.uf().trim().toUpperCase(Locale.ROOT),
                 request.latitude(),
-                request.longitude()
+                request.longitude(),
+                request.imagemUrl()
         );
 
         return toResponse(estabelecimento);
@@ -212,6 +231,7 @@ public class EstabelecimentoService {
                 estabelecimento.getBairro(),
                 estabelecimento.getCidade(),
                 estabelecimento.getUf(),
+                estabelecimento.getImagemUrl(),
                 estabelecimento.getLatitude(),
                 estabelecimento.getLongitude(),
                 estabelecimento.getAtivo(),

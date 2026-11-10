@@ -53,6 +53,10 @@ public record EstabelecimentoRequest(
         @DecimalMin(value = "-180.0", message = "Longitude inválida")
         @DecimalMax(value = "180.0", message = "Longitude inválida")
         @Digits(integer = 3, fraction = 7)
-        BigDecimal longitude
+        BigDecimal longitude,
+
+        @Size(max = 1000, message = "A URL da imagem deve ter no máximo 1000 caracteres")
+        String imagemUrl
+
 
 ) {}
