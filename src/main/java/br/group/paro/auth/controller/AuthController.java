@@ -1,11 +1,14 @@
+
 package br.group.paro.auth.controller;
 
 import br.group.paro.auth.dto.LoginRequest;
 import br.group.paro.auth.dto.LoginResponse;
 import br.group.paro.auth.service.AuthService;
+import br.group.paro.auth.service.LoginRateLimitService;
 import br.group.paro.usuario.dto.UsuarioResponse;
 import br.group.paro.usuario.entity.Usuario;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +20,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Duration;
 import java.util.Map;
@@ -26,24 +30,36 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService authService;
+    private final LoginRateLimitService loginRateLimitService;
     private final boolean cookieSecure;
     private final long expirationMinutes;
 
     public AuthController(
             AuthService authService,
+            LoginRateLimitService loginRateLimitService,
             @Value("${app.auth.cookie-secure}") boolean cookieSecure,
             @Value("${app.jwt.expiration-minutes}") long expirationMinutes
     ) {
         this.authService = authService;
+        this.loginRateLimitService = loginRateLimitService;
         this.cookieSecure = cookieSecure;
         this.expirationMinutes = expirationMinutes;
     }
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(
-            @Valid @RequestBody LoginRequest request
+            @Valid @RequestBody LoginRequest request,
+            HttpServletRequest httpRequest
     ) {
-        Usuario usuario = authService.autenticar(request);
+        String ip = httpRequest.getRemoteAddr();
+        String email = request.email();
+
+        // Verifica se o usuário atingiu o limite de tentativas.
+        Usuario usuario = loginRateLimitService.autenticarComLimite(
+                ip,
+                email,
+                () -> authService.autenticar(request)
+        );
 
         String token = authService.gerarToken(usuario);
 
