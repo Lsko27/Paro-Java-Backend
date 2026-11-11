@@ -38,4 +38,23 @@ public interface EstabelecimentoRepository
     List<Estabelecimento> buscarAtivosPorRecurso(
             @Param("recursoId") Long recursoId
     );
+
+
+    @Query("""
+    SELECT e
+    FROM Estabelecimento e
+    WHERE e.ativo = true
+      AND (
+          LOWER(e.nome) LIKE CONCAT('%', :termo, '%') ESCAPE '\\'
+          OR LOWER(e.logradouro) LIKE CONCAT('%', :termo, '%') ESCAPE '\\'
+          OR LOWER(e.bairro) LIKE CONCAT('%', :termo, '%') ESCAPE '\\'
+          OR LOWER(e.cidade) LIKE CONCAT('%', :termo, '%') ESCAPE '\\'
+      )
+    ORDER BY e.nome ASC
+    """)
+    List<Estabelecimento> buscarAtivosPorTermo(
+            @Param("termo") String termo
+    );
+
+
 }

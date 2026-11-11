@@ -11,8 +11,10 @@ import br.group.paro.usuario.entity.Usuario;
 import br.group.paro.usuario.repository.UsuarioRepository;
 import br.group.paro.estabelecimento.dto.CondicoesAcessoRequest;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Locale;
@@ -89,6 +91,38 @@ public class EstabelecimentoService {
                 .map(this::toResponse)
                 .toList();
     }
+
+
+    @Transactional(readOnly = true)
+    public List<EstabelecimentoResponse> buscarPorTermo(
+            String termo
+    ) {
+        if (termo == null || termo.isBlank()) {
+            return List.of();
+        }
+
+        String termoNormalizado = termo.trim()
+                .toLowerCase(Locale.ROOT);
+
+        if (termoNormalizado.length() > 100) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "O termo de busca deve possuir no máximo 100 caracteres"
+            );
+        }
+
+        String termoEscapado = termoNormalizado
+                .replace("\\", "\\\\")
+                .replace("%", "\\%")
+                .replace("_", "\\_");
+
+        return estabelecimentoRepository
+                .buscarAtivosPorTermo(termoEscapado)
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
 
     @Transactional(readOnly = true)
     public EstabelecimentoResponse buscarPorId(Long id) {

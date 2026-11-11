@@ -54,6 +54,15 @@ public class EstabelecimentoController {
         );
     }
 
+    @GetMapping("/pesquisar")
+    public ResponseEntity<List<EstabelecimentoResponse>> buscarPorTermo(
+            @RequestParam String termo
+    ) {
+        return ResponseEntity.ok(
+                estabelecimentoService.buscarPorTermo(termo)
+        );
+    }
+
     @GetMapping("/meus")
     public ResponseEntity<List<EstabelecimentoResponse>> listarMeus(
             @AuthenticationPrincipal Jwt jwt
