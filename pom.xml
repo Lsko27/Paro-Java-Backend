@@ -11,9 +11,12 @@
 	<groupId>br.group</groupId>
 	<artifactId>paro</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
-	<url/>
+	<name>Parô API</name>
+	<description>
+		API REST para gerenciamento de pontos de apoio
+		destinados a motoristas e entregadores.
+	</description>
+	<url>https://github.com/Lsko27/Paro-Java-Backend</url>
 	<licenses>
 		<license/>
 	</licenses>
@@ -28,9 +31,6 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
-		<maven.compiler.release>21</maven.compiler.release>
-		<maven.compiler.source>24</maven.compiler.source>
-		<maven.compiler.target>24</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
