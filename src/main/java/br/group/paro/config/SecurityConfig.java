@@ -48,7 +48,9 @@ public class SecurityConfig {
             String path = request.getServletPath();
 
             return !path.equals("/api/v1/auth/register")
-                    && !path.equals("/api/v1/auth/login");
+                    && !path.equals("/api/v1/auth/login")
+                    && !path.equals("/api/v1/auth/password/forgot")
+                    && !path.equals("/api/v1/auth/password/reset");
         };
 
         CsrfFilter csrfFilter = new CsrfFilter(csrfRepository);
@@ -83,7 +85,9 @@ public class SecurityConfig {
                                 "/api/v1/health",
                                 "/api/v1/auth/register",
                                 "/api/v1/auth/login",
-                                "/api/v1/auth/csrf"
+                                "/api/v1/auth/csrf",
+                                "/api/v1/auth/password/forgot",
+                                "/api/v1/auth/password/reset"
                         ).permitAll()
 
                         .requestMatchers(
