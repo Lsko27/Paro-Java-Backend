@@ -21,6 +21,9 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import br.group.paro.auth.dto.ForgotPasswordRequest;
+import br.group.paro.auth.dto.ResetPasswordRequest;
+import br.group.paro.auth.service.PasswordResetService;
 
 import java.time.Duration;
 import java.util.Map;
@@ -33,15 +36,18 @@ public class AuthController {
     private final LoginRateLimitService loginRateLimitService;
     private final boolean cookieSecure;
     private final long expirationMinutes;
+    private final PasswordResetService passwordResetService;
 
     public AuthController(
             AuthService authService,
             LoginRateLimitService loginRateLimitService,
+            PasswordResetService passwordResetService,
             @Value("${app.auth.cookie-secure}") boolean cookieSecure,
             @Value("${app.jwt.expiration-minutes}") long expirationMinutes
     ) {
         this.authService = authService;
         this.loginRateLimitService = loginRateLimitService;
+        this.passwordResetService = passwordResetService;
         this.cookieSecure = cookieSecure;
         this.expirationMinutes = expirationMinutes;
     }
@@ -100,6 +106,29 @@ public class AuthController {
                 "token", token.getToken()
         );
     }
+
+
+    @PostMapping("/password/forgot")
+    public ResponseEntity<Void> forgotPassword(
+            @Valid @RequestBody ForgotPasswordRequest request
+    ) {
+        passwordResetService.solicitarRecuperacao(request.email());
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/password/reset")
+    public ResponseEntity<Void> resetPassword(
+            @Valid @RequestBody ResetPasswordRequest request
+    ) {
+        passwordResetService.redefinirSenha(
+                request.token(),
+                request.senha()
+        );
+
+        return ResponseEntity.noContent().build();
+    }
+
 
     @PostMapping("/logout")
     public ResponseEntity<Void> logout() {
